@@ -79,4 +79,11 @@ public class ComplaintEndpoint {
         }
     }
 
+    @DELETE
+    @Path("{id}")
+    public Response deleteComplaint(@PathParam("id") Long id) {
+        complaintDAO.delete(id);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
 }
