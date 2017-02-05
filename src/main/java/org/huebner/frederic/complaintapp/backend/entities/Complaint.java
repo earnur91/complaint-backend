@@ -29,6 +29,10 @@ public class Complaint implements Serializable {
     @Size(min = 1, max = 140)
     private String complaintText;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private ProcessingStatus processingStatus;
+
     public Long getId() {
         return id;
     }
@@ -67,5 +71,13 @@ public class Complaint implements Serializable {
 
     public void setComplaintText(String complaintText) {
         this.complaintText = complaintText;
+    }
+
+    public ProcessingStatus getProcessingStatus() {
+        return processingStatus;
+    }
+
+    public void setProcessingStatus(ProcessingStatus processingStatus) {
+        this.processingStatus = processingStatus;
     }
 }
