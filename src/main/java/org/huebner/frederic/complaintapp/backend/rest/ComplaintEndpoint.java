@@ -40,9 +40,8 @@ public class ComplaintEndpoint {
     @Path("{id}")
     public Response getComplaint(@PathParam("id") Long id) {
         Complaint complaint = complaintDAO.getComplaint(id);
-        if (complaint == null) {
+        if (complaint == null)
             return Response.status(NOT_FOUND).build();
-        }
         return Response.ok(complaint).build();
     }
 
