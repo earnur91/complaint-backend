@@ -82,6 +82,8 @@ public class ComplaintEndpoint {
     @DELETE
     @Path("{id}")
     public Response deleteComplaint(@PathParam("id") Long id) {
+        if (complaintDAO.getComplaint(id) == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
         complaintDAO.delete(id);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
