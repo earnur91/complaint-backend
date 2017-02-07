@@ -49,7 +49,7 @@ public class ComplaintEndpoint {
     public Response createComplaint(Complaint complaint) {
         Complaint savedComplaint = complaintDAO.save(complaint);
 
-        return Response.created(fromUri(uriInfo.getRequestUri()).path("{id}").build(complaint.getId())).entity(savedComplaint).build();
+        return Response.created(fromUri(uriInfo.getRequestUri()).path("{id}").build(savedComplaint.getId())).entity(savedComplaint).build();
     }
 
     @PUT
