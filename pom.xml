@@ -18,7 +18,26 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <outputFileNameMapping>
+                        @{artifactId}@.@{extension}@
+                    </outputFileNameMapping>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.2.Final</version>
+                <configuration>
+                    <filename>complaint-backend.war</filename>
+                </configuration>
+            </plugin>
         </plugins>
+        <finalName>complaint-backend</finalName>
     </build>
     <dependencies>
         <dependency>
