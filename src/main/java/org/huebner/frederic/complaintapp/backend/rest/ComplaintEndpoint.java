@@ -2,6 +2,7 @@ package org.huebner.frederic.complaintapp.backend.rest;
 
 import org.huebner.frederic.complaintapp.backend.ejb.interfaces.ComplaintDAO;
 import org.huebner.frederic.complaintapp.backend.entities.Complaint;
+import org.huebner.frederic.complaintapp.backend.entities.ProcessingStatus;
 import org.huebner.frederic.complaintapp.backend.exceptions.UpdateConflictException;
 
 import javax.ejb.EJB;
@@ -47,8 +48,8 @@ public class ComplaintEndpoint {
 
     @POST
     public Response createComplaint(Complaint complaint) {
+        complaint.setProcessingStatus(ProcessingStatus.SEND);
         Complaint savedComplaint = complaintDAO.save(complaint);
-
         return Response.created(fromUri(uriInfo.getRequestUri()).path("{id}").build(savedComplaint.getId())).entity(savedComplaint).build();
     }
 
